@@ -12,14 +12,14 @@ class Item < ApplicationRecord
     validates :name
     validates :description
     validates :image
-    validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
-    validates :category_id, numericality: { other_than: 1 }
-    validates :condition_id, numericality: { other_than: 1 }
-    validates :delivery_fee_id, numericality: { other_than: 1 }
-    validates :sending_area_id, numericality: { other_than: 1 }
-    validates :sending_days_id, numericality: { other_than: 1 }
+    validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }, format: { with: /\A[0-9]+\z/ }
+    with_options numericality: { other_than: 1 } do
+      validates :category_id
+      validates :condition_id
+      validates :delivery_fee_id
+      validates :sending_area_id
+      validates :sending_days_id
+    end
   end
-
-  
 
 end

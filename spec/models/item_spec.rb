@@ -61,6 +61,36 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Sending days must be other than 1")
       end
+
+      it "category_idがnilだと登録できないこと" do
+        @item.category_id = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Category can't be blank")
+      end
+
+      it "condition_idがnilだと登録できないこと" do
+        @item.condition_id = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Condition can't be blank")
+      end
+
+      it "delivery_fee_idがnilだと登録できないこと" do
+        @item.delivery_fee_id = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Delivery fee can't be blank")
+      end
+
+      it "sending_area_idがnilだと登録できないこと" do
+        @item.sending_area_id = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Sending area can't be blank")
+      end
+      
+      it "sending_days_idがnilだと登録できないこと" do
+        @item.sending_days_id = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Sending days can't be blank")
+      end
       
       it "priceがないと登録できないこと" do
         @item.price = nil
