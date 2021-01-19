@@ -57,7 +57,7 @@ RSpec.describe Item, type: :model do
       end
       
       it "sending_days_idが---だと登録できないこと" do
-        @item.sending_days_id = 1
+        @item.sending_day_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Sending days must be other than 1")
       end
@@ -87,7 +87,7 @@ RSpec.describe Item, type: :model do
       end
       
       it "sending_days_idがnilだと登録できないこと" do
-        @item.sending_days_id = nil
+        @item.sending_day_id = nil
         @item.valid?
         expect(@item.errors.full_messages).to include("Sending days can't be blank")
       end

@@ -7,7 +7,7 @@ FactoryBot.define do
     condition_id { Faker::Number.between(from:2, to:7) }
     delivery_fee_id { Faker::Number.between(from:2, to:3) }
     sending_area_id { Faker::Number.between(from:2, to:48) }
-    sending_days_id { Faker::Number.between(from:2, to:4) }
+    sending_day_id { Faker::Number.between(from:2, to:4) }
     price { Faker::Number.between(from:300, to:9999999) }
 
     after(:build) do |picture|
