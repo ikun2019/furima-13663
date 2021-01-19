@@ -1,5 +1,6 @@
 class Item < ApplicationRecord
   has_one_attached :image
+  belongs_to :user
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
   belongs_to :condition
@@ -18,7 +19,7 @@ class Item < ApplicationRecord
       validates :condition_id
       validates :delivery_fee_id
       validates :sending_area_id
-      validates :sending_days_id
+      validates :sending_day_id
     end
   end
 
