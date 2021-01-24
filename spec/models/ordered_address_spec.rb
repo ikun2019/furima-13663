@@ -20,6 +20,16 @@ RSpec.describe OrderedAddress, type: :model do
     end
 
     context "登録できない場合" do
+      it "user_idがないと登録できないこと" do
+        @ordered_address.user_id = nil
+        @ordered_address.valid?
+        expect(@ordered_address.errors.full_messages).to include("User can't be blank")
+      end
+      it "item_idがないと登録できないこと" do
+        @ordered_address.item_id = nil
+        @ordered_address.valid?
+        expect(@ordered_address.errors.full_messages).to include("Item can't be blank")
+      end
       it "post_codeがnilの場合登録できないこと" do
         @ordered_address.post_code = nil
         @ordered_address.valid?
@@ -72,7 +82,7 @@ RSpec.describe OrderedAddress, type: :model do
         expect(@ordered_address.errors.full_messages).to include("Phone number is invalid")
       end
       it "prefecture_idが1以外でないと登録できないこと" do
-        @ordered_address.prefecture_id = "1"
+        @ordered_address.prefecture_id = 1
         @ordered_address.valid?
         expect(@ordered_address.errors.full_messages).to include("Prefecture must be other than 1")
       end
