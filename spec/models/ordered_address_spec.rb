@@ -12,6 +12,11 @@ RSpec.describe OrderedAddress, type: :model do
       it "全ての値が正しければ購入できること" do
         expect(@ordered_address).to be_valid
       end
+      it "building_nameがブランクでも登録できること" do
+        @ordered_address.building_name = nil
+        expect(@ordered_address).to be_valid
+      end
+      
     end
 
     context "登録できない場合" do
@@ -20,6 +25,12 @@ RSpec.describe OrderedAddress, type: :model do
         @ordered_address.valid?
         expect(@ordered_address.errors.full_messages).to include("Post code can't be blank")
       end
+      it "post_codeがハイフン無しでは登録できないこと" do
+        @ordered_address.post_code = "1111111"
+        @ordered_address.valid?
+        expect(@ordered_address.errors.full_messages).to include("Post code is invalid")
+      end
+      
       it "prefecture_idがnilの場合登録できないこと" do
         @ordered_address.prefecture_id = nil
         @ordered_address.valid?
@@ -55,6 +66,17 @@ RSpec.describe OrderedAddress, type: :model do
         @ordered_address.valid?
         expect(@ordered_address.errors.full_messages).to include("Phone number is invalid")
       end
+      it "phone_numberが英数混合では登録できないこと" do
+        @ordered_address.phone_number = "a9999999999"
+        @ordered_address.valid?
+        expect(@ordered_address.errors.full_messages).to include("Phone number is invalid")
+      end
+      it "prefecture_idが1以外でないと登録できないこと" do
+        @ordered_address.prefecture_id = "1"
+        @ordered_address.valid?
+        expect(@ordered_address.errors.full_messages).to include("Prefecture must be other than 1")
+      end
+      
       it "tokenがnilの場合登録できないこと" do
         @ordered_address.token = nil
         @ordered_address.valid?
