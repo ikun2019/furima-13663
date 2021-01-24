@@ -13,7 +13,7 @@
 |birthday          |date   |null: false              |
 
 ### Association
-- has_many :purchase_records
+- has_many :orders
 - has_many :items
 
 
@@ -31,10 +31,10 @@
 |price           |integer   |null: false      |
 
 ### Association
-- has_one :purchase_records
+- has_one :order
 - belongs_to :user
 
-## purchase_recordsテーブル
+## ordersテーブル
 |column          |type      |options          |
 | -------------- | -------- | --------------- |
 |item            |references|foreign_key: true|
@@ -43,19 +43,19 @@
 ### Association
 - belongs_to :item
 - belongs_to :user
-- has_one :delivery_address
+- has_one :address
 
 
-## delivery_addressesテーブル
+## addressesテーブル
 |column            |type      |options          |
 | ---------------- | -------- | --------------- |
-|purchase_record   |references|foreign_key: true|
-|zip_code          |string    |null: false      |
+|order             |references|foreign_key: true|
+|post_code         |string    |null: false      |
 |prefecture_id     |integer   |null: false      |
 |city              |string    |null: false      |
 |house_number      |string    |null: false      |
 |building_name     |string    |                 |
-|telephone_number  |string    |null: false      |
+|phone_number      |string    |null: false      |
 
 ### Association
-- belongs_to :purchase_record
+- belongs_to :order
