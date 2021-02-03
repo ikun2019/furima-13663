@@ -1,5 +1,5 @@
 class Item < ApplicationRecord
-  has_one_attached :image
+  has_many_attached :images, dependent: :destroy
   belongs_to :user
   has_one :order
   extend ActiveHash::Associations::ActiveRecordExtensions
@@ -13,7 +13,7 @@ class Item < ApplicationRecord
   with_options presence: true do
     validates :name
     validates :description
-    validates :image
+    validates :images
     validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }, format: { with: /\A[0-9]+\z/ }
     with_options numericality: { other_than: 1 } do
       validates :category_id
