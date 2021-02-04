@@ -204,3 +204,20 @@
   font-weight: bold;
   font-size: 23px;
 }
+
+.slide-image {
+  transition: all 1s ease-in-out;
+}
+
+.thumbnails {
+  display: grid;
+  grid-template-columns: repeat(3, 200px);
+  gap: 10px;
+}
+.thumbnail {
+  width: 200px;
+  opacity: 0.4;
+}
+.current {
+  opacity: 1;
+}
