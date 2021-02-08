@@ -2,7 +2,6 @@ if (document.URL.match(/item/)) {
   document.addEventListener("DOMContentLoaded", () => {
     // メイン画像のsrcを取得
     const mainImage = document.getElementById('item-box-img');
-    const mainImageSRC = mainImage.getAttribute('src');
     
     // サムネイル画像をクリックしたらイベント発火
     const thumbnailImage = document.querySelectorAll(".thumbnail");

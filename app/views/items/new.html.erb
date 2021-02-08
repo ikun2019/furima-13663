@@ -17,18 +17,17 @@
         <span class="indispensable">必須</span>
       </div>
       <div class="click-upload">
-        <label id="form-image" for="item_images">
+        <label id="form-image" for="image_file_0">
           <div id="image-list">
             <div id="camera">
-              <i class="fas fa-camera fa-3x hi"></i>
-              <p class="hi">クリックしてファイルをアップロード</p>
+              <i class="fas fa-camera fa-3x"></i>
+              <p>クリックしてファイルをアップロード</p>
             </div>
-            <%= f.file_field :images, name: 'item[images][]', id: 'item_images', class: 'hidden' %>
+            <%= f.file_field :images, name: "item[images][]", id: 'image_file_0', class: 'hidden input-image' %>
           </div>
-          
         </label>
       </div>
-      
+
     </div>
     <%# /出品画像 %>
     <%# 商品名と商品説明 %>

@@ -20,15 +20,20 @@ app/assets/stylesheets/items/new.css %>
         <span class="indispensable">必須</span>
       </div>
       <div class="click-upload">
-        <p>
-          クリックしてファイルをアップロード
-        </p>
-        <%= f.file_field :images, name: 'item[images][]' %>
+        <label id="form-image" for="item_images">
+          <div id="image-list">
+            <div id="camera">
+              <i class="fas fa-camera fa-3x hi"></i>
+              <p class="hi">クリックしてファイルをアップロード</p>
+            </div>
+            <%= f.file_field :images, name: 'item[images][]', id: 'item_images', class: 'hidden' %>
+          </div>   
+        </label>
       </div>
       <div>
-        <% @item.images.each do |image| %>
-          <%= image_tag image, class: 'image-size' %>
-        <% end %>
+        <%# @item.images.each do |image| %>
+          <%#= image_tag image, class: 'image-size' %>
+        <%# end %>
       </div>
     </div>
     <%# /出品画像 %>
