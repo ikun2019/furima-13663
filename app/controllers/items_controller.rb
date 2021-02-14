@@ -25,15 +25,18 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    @item.images.each_with_index do |image, i|
+      @i= i + 1
+    end
     unless @item.user_id == current_user.id
       redirect_to root_path
     end
-    
   end
 
   def update
     if @item.update(item_params)
-      redirect_to item_path(@item.id)
+      # render json: {item: @item}
+      redirect_to root_path
     else
       render action: :edit
     end
