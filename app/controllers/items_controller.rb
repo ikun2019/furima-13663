@@ -11,7 +11,7 @@ class ItemsController < ApplicationController
     @item = Item.new
   end
 
-  def create
+  def create    
     @item = Item.new(item_params)
     if @item.save
       redirect_to root_path
@@ -25,15 +25,18 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    @item.images.each_with_index do |image, i|
+      @i= i + 1
+    end
     unless @item.user_id == current_user.id
       redirect_to root_path
     end
-    
   end
 
   def update
     if @item.update(item_params)
-      redirect_to item_path(@item.id)
+      # render json: {item: @item}
+      redirect_to root_path
     else
       render action: :edit
     end
@@ -52,7 +55,7 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:name, :description, :category_id, :condition_id, :delivery_fee_id, :sending_area_id, :sending_day_id, :price, :image).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :description, :category_id, :condition_id, :delivery_fee_id, :sending_area_id, :sending_day_id, :price, images: []).merge(user_id: current_user.id)
   end
   
   def set_item

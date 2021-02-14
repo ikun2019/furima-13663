@@ -74,7 +74,6 @@
 
 /* 出品画像 */
 .img-upload {
-  display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   padding: 2vh 0;
@@ -226,4 +225,73 @@
 
 .inc {
   font-size: 13px;
+}
+
+
+
+.hidden {
+  display: none;
+}
+#form-image {
+  display: block;
+  min-height: 170px;
+  /* max-width: 540px; */
+  overflow-x: scroll;
+}
+.item_image {
+  height: 135px;
+  width: 180px;
+}
+
+#image-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  background: #ddd;
+  min-height: 135px;
+  min-width: 540px;
+  position: relative;
+  text-align: center;
+  /* pointer-events: none; */
+}
+#camera {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 13px;
+  color: rgb(161, 153, 153);
+}
+
+.image_box {
+  position: relative;
+  /* pointer-events: none; */
+}
+.delete_btn {
+  display: block;
+  width: 40%;
+  padding: 5px 7px;
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  color: #fff;
+  background-color: gray;
+  border-radius: 10%;
+}
+/* .delete_btn:hover {
+  color: #fff;
+  background: #f56500;
+} */
+.edit_btn {
+  width: 40%;
+  padding: 5px 7px;
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  color: #fff;
+  background-color: gray;
+  border-radius: 10%;
+}
+.edit_btn:hover {
+  color: #fff;
+  background: #f56500;
 }

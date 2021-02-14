@@ -19,12 +19,21 @@ app/assets/stylesheets/items/new.css %>
         出品画像
         <span class="indispensable">必須</span>
       </div>
-      <div class="click-upload">
-        <p>
-          クリックしてファイルをアップロード
-        </p>
-        <%= f.file_field :image, id:"item-image" %>
+      <div>
+        <%= f.file_field :images, name: "item[images][]", class: "input-image", multiple: true %>
       </div>
+      <% if false %>
+      <label id="form-image">
+        <div id="image-list"  data-itemId=<%= @item.id %>>
+          <% @item.images.each do |image| %>
+            <div class="image_box" id="image_box_<%= image.id %>" data-imgId="<%= image.id %>">
+              <%= image_tag image, class: "item_image" %>
+            </div>
+          <% end %>
+        </div>
+      </label>
+      <% end %>
+
     </div>
     <%# /出品画像 %>
     <%# 商品名と商品説明 %>
@@ -140,7 +149,7 @@ app/assets/stylesheets/items/new.css %>
     <%# /注意書き %>
     <%# 下部ボタン %>
     <div class="sell-btn-contents">
-      <%= f.submit "変更する" ,class:"sell-btn" %>
+      <%= f.submit "変更する" ,class:"sell-btn", id: "submit" %>
       <%=link_to 'もどる', "#", class:"back-btn" %>
     </div>
     <%# /下部ボタン %>
