@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   before_action :set_item
+  before_action :move_to_sign_in
   before_action :move_to_root
   before_action :ordered_item
   before_action :authenticate_user!
@@ -43,6 +44,13 @@ class OrdersController < ApplicationController
       redirect_to root_path
     end
   end
+
+  def move_to_sign_in
+    unless user_signed_in?
+      redirect_to new_user_session_path
+    end
+  end
+  
 
   def ordered_item
     if @item.order.present?
